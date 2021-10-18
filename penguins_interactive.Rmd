@@ -6,10 +6,27 @@ output: html_document
 ---
 
 ```{r setup, include=TRUE, message = FALSE, warning = TRUE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
 library(plotly)
 library(DT)
 library(tidyverse)
 library(palmerpenguins)
+
+# install.packages("package_name")
+```
+
+```{r}
+# specific changes in the code chunk option will override any global changes
+penguins_graph <- ggplot(penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point(aes(color = species))
+```
+
+
+```{r}
+ggplotly(penguins_graph)
+```
+
+```{r}
+datatable(penguins)
 ```
 
